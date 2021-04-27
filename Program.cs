@@ -18,7 +18,7 @@ namespace LambdaExpressionProblem
 
             //method call
             AddingPersonDetails(list);
-
+            RetrieveTop2(list);
             Console.ReadLine();
         }
 
@@ -31,16 +31,21 @@ namespace LambdaExpressionProblem
             personList.Add(new Person() { SSN = 5, Age = 75, Name = "nilima", Address = "pune" });
             personList.Add(new Person() { SSN = 6, Age = 86, Name = "Tina", Address = "Nashik" });
             personList.Add(new Person() { SSN = 7, Age = 15, Name = "anvi", Address = "Hyderabad" });
-            IterateOverList(personList);
+            
         }
-        public static void IterateOverList(List<Person> personlist)
+       
+
+        //UC2 Retrieve top two age less than 60
+        public static void RetrieveTop2(List<Person> list)
         {
-            foreach (Person person in personlist)
+            var result = list.FindAll(x => x.Age < 60).OrderBy(x => x.Age).Take(2);
+            foreach (Person person in result)
             {
-                Console.WriteLine("Age\t" + person.Age + "\t" + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+                Console.WriteLine("Age\t" + person.Age + "Name\t" + person.Name + "\t" + "Address\t" + person.Address);
+
             }
         }
-
     }
 }
+
 
